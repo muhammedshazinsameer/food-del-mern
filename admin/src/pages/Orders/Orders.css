@@ -1,0 +1,129 @@
+.order.add {
+    /* Container for the entire Orders page (admin view) */
+    margin: 50px 0;
+    padding: 0 5%;
+}
+
+.order.add h3 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
+    border-bottom: 2px solid #ff6347; /* Tomato accent */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-item {
+    /* Defines the structure for a single order row */
+    display: grid;
+    /* Grid Columns: Icon (0.5fr), Details/Address (3fr), Item Count (0.7fr), Amount (0.8fr), Status Select (1fr) */
+    grid-template-columns: 0.5fr 3fr 0.7fr 0.8fr 1fr; 
+    align-items: center;
+    gap: 30px;
+    padding: 15px 25px;
+    font-size: 14px;
+    color: #454545;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.order-item img {
+    /* Parcel Icon Styling */
+    width: 40px;
+    object-fit: contain;
+}
+
+.order-item-details {
+    /* Wrapper for all the text information */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.order-item-food {
+    /* List of food items (name x quantity) */
+    font-weight: 500;
+    color: #555;
+    margin: 0;
+}
+
+.order-item-name {
+    /* Customer name */
+    font-weight: 600;
+    margin: 0;
+}
+
+.order-item-address p {
+    /* Address lines */
+    margin: 0;
+    line-height: 1.2;
+    color: #777;
+}
+
+.order-item-phone {
+    /* Phone number */
+    font-weight: 500;
+    color: #007bff; /* Blue accent for phone */
+    margin: 0;
+}
+
+.order-item p:nth-child(4),
+.order-item p:nth-child(5) {
+    /* Styling for Item Count and Amount */
+    font-weight: 500;
+}
+
+.order-item select {
+    /* Status dropdown styling */
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 14px;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+@media (max-width: 900px) {
+    .order-item {
+        /* Adjust column structure on medium screens */
+        grid-template-columns: 0.5fr 3.5fr 1fr 1fr; /* Removed one column, maybe combining item count and amount */
+        gap: 20px;
+        font-size: 13px;
+    }
+    .order-item select {
+        /* Move select to the bottom row, spanning all columns */
+        grid-column: 1 / span 4;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .order.add {
+        padding: 0 3%;
+    }
+    .order-item {
+        /* Stack elements vertically on mobile */
+        grid-template-columns: 1fr;
+        padding: 15px;
+        text-align: left;
+    }
+    .order-item img {
+        display: none; /* Hide icon on very small screens */
+    }
+    .order-item select {
+        grid-column: 1 / span 1;
+        width: 100%;
+        margin-top: 5px;
+    }
+}

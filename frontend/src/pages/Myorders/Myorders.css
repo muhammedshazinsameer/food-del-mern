@@ -1,0 +1,107 @@
+.my-orders {
+    /* Basic layout adjustments */
+    margin: 50px 0px;
+    padding: 0 5%;
+}
+
+.my-orders h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
+    border-bottom: 2px solid #ff6347; /* Tomato color accent */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.my-orders .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.my-orders-order {
+    /* Layout for a single order row */
+    display: grid;
+    /* Defines 6 columns: Icon, Items List, Amount, Count, Status, Button */
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1.5fr; 
+    align-items: center;
+    gap: 30px;
+    font-size: 14px;
+    padding: 15px 25px;
+    color: #454545;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.my-orders-order img {
+    /* Styling for the parcel icon */
+    width: 50px;
+    /* Ensures the image doesn't stretch the row */
+    object-fit: contain; 
+}
+
+.my-orders-order p:first-child {
+    /* Styling for the list of items (name x quantity) */
+    font-weight: 500;
+    color: #555;
+}
+
+.my-orders-order span {
+    /* Styling for the status dot */
+    color: tomato; /* Red dot for status */
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.my-orders-order button {
+    /* Styling for the Track Order button */
+    border: none;
+    padding: 10px 0;
+    border-radius: 4px;
+    background-color: #ffe8e4;
+    cursor: pointer;
+    color: #ff6347;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.my-orders-order button:hover {
+    background-color: #ffcfc4;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+@media (max-width: 900px) {
+    .my-orders-order {
+        /* Adjust layout for smaller screens */
+        grid-template-columns: 0.5fr 3fr 1fr 1fr 1fr; /* Remove track button column */
+        gap: 15px;
+        font-size: 13px;
+    }
+    .my-orders-order button {
+        /* Place button below content on small screens */
+        margin-top: 10px;
+        grid-column: 1 / span 5; 
+    }
+}
+
+@media (max-width: 600px) {
+    .my-orders {
+        margin: 30px 0;
+    }
+    .my-orders-order {
+        /* Stack elements vertically on mobile */
+        grid-template-columns: 1fr;
+        font-size: 14px;
+        padding: 15px;
+    }
+    .my-orders-order img {
+        display: none; /* Hide icon on very small screens for space */
+    }
+    .my-orders-order button {
+        grid-column: 1 / span 1;
+        width: 100%;
+    }
+}
