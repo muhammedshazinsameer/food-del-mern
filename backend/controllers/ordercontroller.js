@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const placeOrder = async (req,res)=>{
 
-    const frontend_url = "https://superb-queijadas-ad430e.netlify.app";
+    const frontend_url = "https://layalirest.netlify.app";
 
     try {
         const newOrder = new OrderModel({
