@@ -102,4 +102,52 @@ const UpdateStatus = async(req,res)=>{
     }
 }
 
-export {placeOrder,verifyOrder,userOrders,ListOrders,UpdateStatus}
+const DeleteOrder = async (req, res) => {
+  try {
+    const { orderId } = req.body;
+
+    console.log("================================");
+    console.log("DELETE ORDER REQUEST");
+    console.log("Order ID:", orderId);
+
+    if (!orderId) {
+      console.log("No order ID received");
+
+      return res.status(400).json({
+        success: false,
+        message: "Order ID is required",
+      });
+    }
+
+    const deletedOrder = await OrderModel.findByIdAndDelete(orderId);
+
+    console.log("Database result:", deletedOrder);
+
+    if (!deletedOrder) {
+      console.log("Order was not found in database");
+
+      return res.status(404).json({
+        success: false,
+        message: "Order not found",
+      });
+    }
+
+    console.log("ORDER DELETED SUCCESSFULLY");
+    console.log("================================");
+
+    return res.status(200).json({
+      success: true,
+      message: "Order deleted successfully",
+    });
+
+  } catch (error) {
+    console.error("DELETE ORDER ERROR:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export {placeOrder,verifyOrder,userOrders,ListOrders,UpdateStatus,DeleteOrder}
