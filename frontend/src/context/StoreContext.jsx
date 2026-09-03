@@ -7,7 +7,7 @@ export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
   // FIXED NAME: cartItems (lowercase c, plural s)
   const [cartItems, setCartItems] = useState({});
-  const url = 'https://food-del-mern-r8jg.onrender.com';
+  const url = import.meta.env.VITE_API_URL;
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
 
